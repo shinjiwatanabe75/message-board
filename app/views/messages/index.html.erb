@@ -13,12 +13,13 @@
   <!--メッセージの一覧画面を作成 -->
 </div>
 
-<%= form_for(@message) do |f| %>
+<%= form_for(@message, html: { :class => 'form-horizontal'}) do |f| %>
   名前:
-  <%= f.text_field :name %>
+  <%= f.text_field :name, :class => 'form-control' %>
   内容:
-  <%= f.text_area :body, :size => "50x5" %>
+  <%= f.text_area :body, :class => 'form-control', :size => "50x5" %>
   <!-- 本文入力部分:bodyを<textarea>タグに変更するためにf.text_areaに変更 -->
   <!-- 入力部分の大きさを広げたいので、＃:size => "50x5"＃を追加 -->
-  <%= f.submit %>
+  <!--名前・内容・submitを縦に並べたいと思い、7.4を参考にformタグに<form class="form-horizontal">をつけ（済）、class="form-group"を入れ（何故か入った）、<input>タグにclass="form-control"を入れたい（済？）  -->
+  <%= f.submit%>
 <% end %>
