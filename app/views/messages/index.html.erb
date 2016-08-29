@@ -1,20 +1,29 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-    メッセージ一覧
+  <div class="panel-heading text-center">
+    <b>メッセージ一覧</b>
   </div>
     
   <div class="panel-body">
-    <!--メッセージパネルを見やすくする<ul>追加 -->
+    <!--メッセージパネルを見やすくする<ul><span>,<ul option>追加,col-mx-xでの整列 -->
     <% @messages.each do |message| %>
-    <ul>
-      <li>
-        <span class="label label-info"><%= message.name %></span>
-        <span class="label label-warning"><%= message.age %>才</span>
-        <%= message.body %>
-        (<%= link_to "edit" , edit_message_path(message) %>
-         <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？'} %>
-        )
-        <br>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-md-2">
+            <span class="label label-info"><%= message.name %></span>
+          </div>
+          <div class="col-md-1">
+            <span class="label label-warning"><%= message.age %>才</span>
+          </div>
+          <div class="col-md-7">
+            <%= message.body %>
+          </div>
+          <div class="col-md-2">
+            (<%= link_to "edit" , edit_message_path(message) %>
+            <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？'} %>
+            )
+          </div>
+        </div>
       </li>
     </ul>
     <% end %>
