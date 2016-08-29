@@ -14,12 +14,23 @@
 </div>
 
 <%= form_for(@message, html: { :class => 'form-horizontal'}) do |f| %>
-  名前:
-  <%= f.text_field :name, :class => 'form-control' %>
-  内容:
-  <%= f.text_area :body, :class => 'form-control', :size => "50x5" %>
-  <!-- 本文入力部分:bodyを<textarea>タグに変更するためにf.text_areaに変更 -->
-  <!-- 入力部分の大きさを広げたいので、＃:size => "50x5"＃を追加 -->
-  <!--名前・内容・submitを縦に並べたいと思い、7.4を参考にformタグに<form class="form-horizontal">をつけ（済）、class="form-group"を入れ（入ってなくても動いた）、<input>タグにclass="form-control"を入れたい（済？submitにはclass設定しなくても整列した）  -->
-  <%= f.submit%>
+  <div class="form-group">
+    <label for="message_name" class="control-label col-md-2">
+      名前:
+    </label>
+    <div class="col-md-4">
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+    <label for="message_body" class="control-label col-md-2">
+      内容:
+    </label>
+    <div class="col-md-4">
+      <%= f.text_area :body, :class => "form-control" %>
+    </div>
+    <!-- 本文入力部分:bodyを<textarea>タグに変更するためにf.text_areaに変更 -->
+    <!--名前・内容・submitを縦に並べたいと思い、7.4を参考にformタグに<form class="form-horizontal">をつけ（済）、class="form-group"を入れ（済）、<input>タグにclass="form-control"を入れたい（済）  -->
+    <!-- 位置のコントロールをclass= col-md-2や4で実行、text_areaにつけていたsizeオプションは無意味なので削除 -->
+  </div>
+  <%= f.submit %>
+    <!-- submitボタンをform-horizontalで囲う為にform-gruopから出す-->
 <% end %>
