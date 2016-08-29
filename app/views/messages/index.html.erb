@@ -4,14 +4,19 @@
   </div>
     
   <div class="panel-body">
+    <!--メッセージパネルを見やすくする<ul>追加 -->
     <% @messages.each do |message| %>
-      <span class="label label-info"><%= message.name %></span>
-        <%= message.age %>
+    <ul>
+      <li>
+        <span class="label label-info"><%= message.name %></span>
+        <span class="label label-warning"><%= message.age %>才</span>
         <%= message.body %>
         (<%= link_to "edit" , edit_message_path(message) %>
          <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？'} %>
         )
-      <br>
+        <br>
+      </li>
+    </ul>
     <% end %>
   </div>
   <!--メッセージの一覧画面を作成 -->
